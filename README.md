@@ -15,9 +15,9 @@ Demo: scene text image 'handmade, aishahaeye', 'RONALDO'
 ![demo](./demo_pics/WechatIMG65.png)
 
 
-##Datasets
+## Datasets
 
-**Train: **
+**Train:**
 
 | Dataset       | Number | Note                                                         |
 | ------------- | ------ | ------------------------------------------------------------ |
@@ -113,7 +113,7 @@ The following images are mainly selected from SVT, ICDAR2013, etc.
 
 
 
-###Recognition accuracy inprovement on scene text recognition datasets:
+### Recognition accuracy inprovement on scene text recognition datasets:
 
 Generator is trained and tested on SynthText_hr (129W) with the input size of **128*32**
 
@@ -133,7 +133,7 @@ Generator is trained and tested on SynthText_HR (7W) with the input size of **25
 | ASTER(fintune)  |      |      |      |        |      |      |        |
 | **improvement** |      |      |      |        |      |      |        |
 
-###Restoration ability on low-resolution text image recognition:
+### Restoration ability on low-resolution text image recognition:
 
 With the test size decreases, the recognition accuracy of the images restored by TextSR are much higher than that by SRGAN. When the test images are downsampled to 20*5, our methods still have an accuracy of more than 40% whereas there are only 100 pixels in each image. 
 
