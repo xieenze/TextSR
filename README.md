@@ -8,9 +8,7 @@
 
 * We mainly compare our method with SOTA super-resolution  method SRGAN.
 
-* Demo: scene text image 'handmade, aishahaeye', 'RONALDO' 
-
-![](./demo_pics/1568652601938.jpg)
+* Demo: scene text image 'RONALDO' , for more details, refer to [TextSR](https://arxiv.org/abs/1909.07113).
 
 ![demo](./demo_pics/WechatIMG65.png)
 
@@ -22,30 +20,22 @@
 
 | Dataset       | Number | Note                                                         |
 | ------------- | ------ | ------------------------------------------------------------ |
-| SynthText     |        | SynthText is the synthetic text dataset proposed in (Gupta, Vedaldi, and Zisserman 2016). It is proposed for text detection. We crop the words using the groundtruth word bounding boxes. You can crop the images by`python3` |
+| SynthText     | 726W   | SynthText is the synthetic text dataset proposed in (Gupta, Vedaldi, and Zisserman 2016). It is proposed for text detection. We crop the words using the groundtruth word bounding boxes. You can crop the images by`python3 utils/crop_800k.py`, the output file syntax_crop.odgt contains the needed information to create the lmdb file of SynthText. |
 | SynthText_hr: | 129W   | SynthText_hr are the images bigger than 128*32 in SynthText. |
-| SynthText_HR: | 7W     | SynthText_hr are the images bigger than 256*64 in SynthText. |
+| SynthText_HR: | 7W     | SynthText_HR are the images bigger than 256*64 in SynthText. |
 
 * **Test:** 
 
-The 7 scene text recognition datasets can be found here: [STR datasets](https://github.com/chengzhanzhan/STR)
+Ic13, ic15, ic03, cute, svt, svtp, iiit5k
 
-| Dataset   | Number |
-| --------- | ------ |
-| ICDAR2015 | 1811   |
-| ICDAR2013 | 1015   |
-| ICDAR2003 | 867    |
-| CUTE80    | 288    |
-| SVT       | 647    |
-| SVTP      | 645    |
-| IIIT5K    | 3000   |
+The 7 scene text recognition datasets can be found here: [STR datasets](https://github.com/chengzhanzhan/STR)
 
 * **Convert LMDB:**
 
 The LMDB files can be created by 
 
 ```go
-python3 create.py
+python3 utils/create_lmdb.py
 ```
 
 ## Downloads
@@ -64,6 +54,7 @@ python3 create.py
 
 - Pytorch 1.1.0
 - Cuda 9.0
+- 
 - 
 
 
@@ -98,21 +89,9 @@ python3 main.py --test --single_test --test_data_dir='ic15_1811' --width=128 --h
 python3 main.py --convert --image_path='./' --width=128 --height=32 --ds_scale=4
 ```
 
+
+
 ## Demonstration
-
-* **Super-resolution results on scene text recognition datasets:**
-
-The following images are mainly selected from CUTE80, ICDAR2013, ICDAR2015, ICDAR2003, etc.
-
-![](./demo_pics/1568723904990.jpg)
-
-* **Super-resolution on scene text detection datasets:**
-
-The following images are mainly selected from SVT, ICDAR2013, etc.
-
-![](./demo_pics/1568724040467.jpg)
-
-
 
 * **Recognition accuracy inprovement on scene text recognition datasets:**
 
@@ -147,24 +126,3 @@ Model trained on SynthText_HR (129W) with the input size of **128*32**
 | Bicubic | 90.5%  | 89.7% | 63.9% | 30.8% | 16.1% |
 | SRGAN   | 90.6%  | 90.1% | 72.7% | 44.9% | 20.0% |
 | TextSR  | 91.3%  | 90.5% | 83.1% | 62.6% | 42.8% |
-
-**ICDAR2003**
-
-Model trained on SynthText_HR (129W) with the input size of **128*32**
-
-| size    | 128*32 | 64*16 | 32*8  | 24*6  | 20*5  |
-| ------- | ------ | ----- | ----- | ----- | ----- |
-| Bicubic | 93.1%  | 91.8% | 68.1% | 32.9% | 13.6% |
-| SRGAN   | 93.0%  | 92.5% | 78.4% | 48.3% | 28.6% |
-| TextSR  | 93.2%  | 93.1% | 85.0% | 65.7% | 43.7% |
-
-**IIIT5K**
-
-Model trained on SynthText_HR (129W) with the input size of **128*32**
-
-| size    | 128*32 | 64*16 | 32*8  | 24*6  | 20*5  |
-| ------- | ------ | ----- | ----- | ----- | ----- |
-| Bicubic | 92.4%  | 89.9% | 58.3% | 28.0% | 13.7% |
-| SRGAN   | 92.1%  | 91.6% | 70.4% | 43.2% | 27.7% |
-| TextSR  | 92.5%  | 91.6% | 77.9% | 56.9% | 40.9% |
-
