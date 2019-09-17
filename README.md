@@ -4,20 +4,21 @@
 
 ## introduction
 
-This project is a pytorch inplementation of the scene text picture super-resolution algorithm [TextSR](https://arxiv.org/abs/1909.07113).   TextSR is an end-to-end network aimed at restoring the low-resolution scene text images, in which the results of the text recognition network can feed back to guide the training of the super-resolution network. Under the guidance of the text recognition network, the super-resolution network would focus on refining the text region, and thus generate clear, sharp and identifiable text images.
+* This project is a pytorch inplementation of the scene text picture super-resolution algorithm [TextSR](https://arxiv.org/abs/1909.07113).   TextSR is an end-to-end network aimed at restoring the low-resolution scene text images, in which the results of the text recognition network can feed back to guide the training of the super-resolution network. Under the guidance of the text recognition network, the super-resolution network would focus on refining the text region, and thus generate clear, sharp and identifiable text images.
 
-We mainly compare our method with SOTA super-resolution  method SRGAN.
+* We mainly compare our method with SOTA super-resolution  method SRGAN.
 
-Demo: scene text image 'handmade, aishahaeye', 'RONALDO' 
+* Demo: scene text image 'handmade, aishahaeye', 'RONALDO' 
 
 ![](./demo_pics/1568652601938.jpg)
 
 ![demo](./demo_pics/WechatIMG65.png)
 
 
+
 ## Datasets
 
-**Train:**
+* **Train:**
 
 | Dataset       | Number | Note                                                         |
 | ------------- | ------ | ------------------------------------------------------------ |
@@ -25,7 +26,7 @@ Demo: scene text image 'handmade, aishahaeye', 'RONALDO'
 | SynthText_hr: | 129W   | SynthText_hr are the images bigger than 128*32 in SynthText. |
 | SynthText_HR: | 7W     | SynthText_hr are the images bigger than 256*64 in SynthText. |
 
-**Test:** 
+* **Test:** 
 
 The 7 scene text recognition datasets can be found here: [STR datasets](https://github.com/chengzhanzhan/STR)
 
@@ -39,7 +40,7 @@ The 7 scene text recognition datasets can be found here: [STR datasets](https://
 | SVTP      | 645    |
 | IIIT5K    | 3000   |
 
-**Convert LMDB:**
+* **Convert LMDB:**
 
 The LMDB files can be created by 
 
@@ -49,15 +50,15 @@ python3 create.py
 
 ## Downloads
 
-Our re-implemented aster model: 
+* Our re-implemented aster model: 
 
-Our re-implemented aster model(finetune): 
+* Our re-implemented aster model(finetune): 
 
-Our TextSR model (128*32, trained on SynthText_hr): 
+* Our TextSR model (128*32, trained on SynthText_hr): 
 
-Our TextSR model (256*64, trained on SynthText_HR): 
+* Our TextSR model (256*64, trained on SynthText_HR): 
 
-SRGAN model (trained on ICDAR2013, ICDAR2015, SynthText_HR, 120 epochs): 
+* SRGAN model (trained on ICDAR2013, ICDAR2015, SynthText_HR, 120 epochs): 
 
 ## Prerequisites
 
@@ -71,27 +72,27 @@ SRGAN model (trained on ICDAR2013, ICDAR2015, SynthText_HR, 120 epochs):
 
 ## Training & testing & converting images
 
-### Trainging
+* **Training**
 
 ```go
 python3 main.py --train_data_dir='syn800k_hr' --val_data_dir='ic15_1811' --width=128 --height=32 --epochs=10 --
 ```
 
-### Testing (lmdb file needed)
+* **Testing (lmdb file needed)**
 
-**Test all **(super-resolute all the images)
+Test all(super-resolute all the images)
 
 ```go
 python3 main.py --test --test_data_dir='ic15_1811' --width=128 --height=32 
 ```
 
-**Test one by one** (super_resolute the images of which original sizes are smaller than blur_w * blur_h)
+Test one by one (super_resolute the images of which original sizes are smaller than blur_w * blur_h)
 
 ```go
 python3 main.py --test --single_test --test_data_dir='ic15_1811' --width=128 --height=32 --blur_w=64 --blur_h=32
 ```
 
-### Converting images to bicubic & SRGAN & TextSR
+* **Converting images to bicubic & SRGAN & TextSR**
 
 ```go
 python3 main.py --convert --image_path='./' --width=128 --height=32 --ds_scale=4
@@ -99,13 +100,13 @@ python3 main.py --convert --image_path='./' --width=128 --height=32 --ds_scale=4
 
 ## Demonstration
 
-### Super-resolution results on scene text recognition datasets:
+* **Super-resolution results on scene text recognition datasets:**
 
 The following images are mainly selected from CUTE80, ICDAR2013, ICDAR2015, ICDAR2003, etc.
 
 ![](./demo_pics/1568723904990.jpg)
 
-### Super-resolution on scene text detection datasets:
+* **Super-resolution on scene text detection datasets:**
 
 The following images are mainly selected from SVT, ICDAR2013, etc.
 
@@ -113,18 +114,9 @@ The following images are mainly selected from SVT, ICDAR2013, etc.
 
 
 
-### Recognition accuracy inprovement on scene text recognition datasets:
+* **Recognition accuracy inprovement on scene text recognition datasets:**
 
-Generator is trained and tested on SynthText_hr (129W) with the input size of **128*32**
-
-| dataset         | ic15 | ic13 | ic03 | CUTE80 | svt  | svtp | IIIT5K |
-| --------------- | ---- | ---- | ---- | ------ | ---- | ---- | ------ |
-| ASTER           |      |      |      |        |      |      |        |
-| **improvement** |      |      |      |        |      |      |        |
-| ASTER(fintune)  |      |      |      |        |      |      |        |
-| **improvement** |      |      |      |        |      |      |        |
-
-Generator is trained and tested on SynthText_HR (7W) with the input size of **256*64**
+Generator trained and tested on SynthText_hr (129W) with the input size of **128*32**
 
 | dataset         | ic15 | ic13 | ic03 | CUTE80 | svt  | svtp | IIIT5K |
 | --------------- | ---- | ---- | ---- | ------ | ---- | ---- | ------ |
@@ -133,7 +125,16 @@ Generator is trained and tested on SynthText_HR (7W) with the input size of **25
 | ASTER(fintune)  |      |      |      |        |      |      |        |
 | **improvement** |      |      |      |        |      |      |        |
 
-### Restoration ability on low-resolution text image recognition:
+Generator trained and tested on SynthText_HR (7W) with the input size of **256*64**
+
+| dataset         | ic15 | ic13 | ic03 | CUTE80 | svt  | svtp | IIIT5K |
+| --------------- | ---- | ---- | ---- | ------ | ---- | ---- | ------ |
+| ASTER           |      |      |      |        |      |      |        |
+| **improvement** |      |      |      |        |      |      |        |
+| ASTER(fintune)  |      |      |      |        |      |      |        |
+| **improvement** |      |      |      |        |      |      |        |
+
+* **Restoration ability on low-resolution text image recognition:**
 
 With the test size decreases, the recognition accuracy of the images restored by TextSR are much higher than that by SRGAN. When the test images are downsampled to 20*5, our methods still have an accuracy of more than 40% whereas there are only 100 pixels in each image. 
 
