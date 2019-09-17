@@ -10,9 +10,9 @@ We mainly compare our method with SOTA super-resolution  method SRGAN.
 
 Demo: scene text image 'handmade, aishahaeye', 'RONALDO' 
 
-![](/Users/wangwenjia/Desktop/AAAI/1568652601938.jpg)
+![](./demo_pics/1568652601938.jpg)
 
-![demo](/Users/wangwenjia/Desktop/AAAI/WechatIMG65.png)
+![demo](./demo_pics/WechatIMG65.png)
 
 ##Datasets
 
@@ -102,13 +102,13 @@ python3 main.py --convert --image_path='./' --width=128 --height=32 --ds_scale=4
 
 The following images are mainly selected from CUTE80, ICDAR2013, ICDAR2015, ICDAR2003, etc.
 
-![](/Users/wangwenjia/Desktop/AAAI/1568723904990.jpg)
+![](./demo_pics/1568723904990.jpg)
 
 ### Super-resolution on scene text detection datasets:
 
 The following images are mainly selected from SVT, ICDAR2013, etc.
 
-![](/Users/wangwenjia/Desktop/AAAI/1568724040467.jpg)
+![](./demo_pics/1568724040467.jpg)
 
 
 
