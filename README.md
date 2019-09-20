@@ -8,11 +8,13 @@
 
 * We mainly compare our method with SOTA super-resolution  method SRGAN.
 
-* Demo: scene text image 'RONALDO' , for more details, refer to [TextSR](https://arxiv.org/abs/1909.07113).
+* Demo: scene text image 'RONALDO'., for more details, please refer to [TextSR](https://arxiv.org/abs/1909.07113).
 
-![demo](./demo_pics/WechatIMG65.png)
+![](/Users/wangwenjia/Desktop/AAAI/demo_pics/RONALDO.jpg)
 
+Other positive cases:
 
+![demo](/Users/wangwenjia/Desktop/AAAI/demo_pics/positive_cases_1.jpg)
 
 ## Datasets
 
@@ -20,17 +22,29 @@
 
 | Dataset       | Number | Note                                                         |
 | ------------- | ------ | ------------------------------------------------------------ |
-| SynthText     | 726W   | SynthText is the synthetic text dataset proposed in (Gupta, Vedaldi, and Zisserman 2016). It is proposed for text detection. We crop the words using the groundtruth word bounding boxes. You can crop the images by`python3 utils/crop_800k.py`, the output file syntax_crop.odgt contains the needed information to create the lmdb file of SynthText. |
+| SynthText     | 726W   | SynthText is the synthetic text dataset proposed in Synthetic Data for Text Localisation in Natural Images [download link](http://www.robots.ox.ac.uk/~vgg/data/scenetext/). It is proposed for text detection. We crop the words using the groundtruth word bounding boxes. |
 | SynthText_hr: | 129W   | SynthText_hr are the images bigger than 128*32 in SynthText. |
 | SynthText_HR: | 7W     | SynthText_HR are the images bigger than 256*64 in SynthText. |
+
+You can crop the SynthText images by 
+
+```
+python3 utils/crop_800k.py --gt_path='./SynthText/gt.mat' --out_path='./'  --syntxt_path='./SynthText'
+```
+
+The output file **syntax_crop.odgt** contains the needed json information to create the LMDB file of SynthText.
 
 * **Test:** 
 
 Ic13, ic15, ic03, cute, svt, svtp, iiit5k
 
-The 7 scene text recognition datasets can be found here: [STR datasets](https://github.com/chengzhanzhan/STR)
+The 7 scene text recognition datasets can be found here: [STR datasets](https://github.com/chengzhanzhan/STR) (GitHub)
 
-* **Convert LMDB:**
+The LMDB of STR datasets can be downloaded here:
+
+[Google Drive](https://drive.google.com/open?id=1vf_oJwk5V3pytMoblx6atSanxJSDccrt)   [Baidu Netdisk](https://pan.baidu.com/s/1yskh-1Nhob370wG8RY8EyQ)
+
+* **Create LMDB:**
 
 The LMDB files can be created by 
 
@@ -38,26 +52,28 @@ The LMDB files can be created by
 python3 utils/create_lmdb.py
 ```
 
-## Downloads
+We have produced the codes to create LMDB files from **.txt **or **.odgt** file. You should change the details in the code.
 
-* Our re-implemented aster model: 
+## Models
 
-* Our re-implemented aster model(finetune): 
+* Our re-implemented aster model:
+
+  [Google Drive]()    [Baidu Netdisk]()
 
 * Our TextSR model (128*32, trained on SynthText_hr): 
 
-* Our TextSR model (256*64, trained on SynthText_HR): 
+  [Google Drive]()    [Baidu Netdisk]()
 
-* SRGAN model (trained on ICDAR2013, ICDAR2015, SynthText_HR, 120 epochs): 
+* SRGAN model (trained on ICDAR2013_train, ICDAR2015_train, SynthText_HR, 100 epochs): 
+
+  [Google Drive]()    [Baidu Netdisk]()
 
 ## Prerequisites
 
 - Pytorch 1.1.0
 - Cuda 9.0
+- Numpy 1.17.0
 - 
-- 
-
-
 
 
 
@@ -66,27 +82,21 @@ python3 utils/create_lmdb.py
 * **Training**
 
 ```go
-python3 main.py --train_data_dir='syn800k_hr' --val_data_dir='ic15_1811' --width=128 --height=32 --epochs=10 --
+python3 main.py --train_data_dir='./dataset/syn800k_hr' --val_data_dir='./dataset/ic15_1811' --width=128 --height=32 --epochs=10 --logs_dir='./logs_2019' 
 ```
 
 * **Testing (lmdb file needed)**
 
-Test all(super-resolute all the images)
+Test with 
 
 ```go
-python3 main.py --test --test_data_dir='ic15_1811' --width=128 --height=32 
-```
-
-Test one by one (super_resolute the images of which original sizes are smaller than blur_w * blur_h)
-
-```go
-python3 main.py --test --single_test --test_data_dir='ic15_1811' --width=128 --height=32 --blur_w=64 --blur_h=32
+sh test.sh
 ```
 
 * **Converting images to bicubic & SRGAN & TextSR**
 
 ```go
-python3 main.py --convert --image_path='./' --width=128 --height=32 --ds_scale=4
+python3 convert.py --image_path='./' --width=128 --height=32 --ds_scale=4
 ```
 
 
@@ -101,28 +111,22 @@ Generator trained and tested on SynthText_hr (129W) with the input size of **128
 | --------------- | ---- | ---- | ---- | ------ | ---- | ---- | ------ |
 | ASTER           |      |      |      |        |      |      |        |
 | **improvement** |      |      |      |        |      |      |        |
-| ASTER(fintune)  |      |      |      |        |      |      |        |
+| ASTER(fintune)  | 78.0 |      |      |        |      |      |        |
 | **improvement** |      |      |      |        |      |      |        |
 
 Generator trained and tested on SynthText_HR (7W) with the input size of **256*64**
 
 | dataset         | ic15 | ic13 | ic03 | CUTE80 | svt  | svtp | IIIT5K |
 | --------------- | ---- | ---- | ---- | ------ | ---- | ---- | ------ |
-| ASTER           |      |      |      |        |      |      |        |
-| **improvement** |      |      |      |        |      |      |        |
+| ASTER           | 77.5 | 88.2 |      |        |      |      |        |
+| **improvement** | 78.5 | 88.4 |      |        |      |      |        |
 | ASTER(fintune)  |      |      |      |        |      |      |        |
 | **improvement** |      |      |      |        |      |      |        |
 
 * **Restoration ability on low-resolution text image recognition:**
 
-With the test size decreases, the recognition accuracy of the images restored by TextSR are much higher than that by SRGAN. When the test images are downsampled to 20*5, our methods still have an accuracy of more than 40% whereas there are only 100 pixels in each image. 
 
-**ICDAR2013**
 
-Model trained on SynthText_HR (129W) with the input size of **128*32**
+## Acknowledge
 
-| size    | 128*32 | 64*16 | 32*8  | 24*6  | 20*5  |
-| ------- | ------ | ----- | ----- | ----- | ----- |
-| Bicubic | 90.5%  | 89.7% | 63.9% | 30.8% | 16.1% |
-| SRGAN   | 90.6%  | 90.1% | 72.7% | 44.9% | 20.0% |
-| TextSR  | 91.3%  | 90.5% | 83.1% | 62.6% | 42.8% |
+Our codes are based on SOTA recognition network [aster-pytorch], thanks very much.
