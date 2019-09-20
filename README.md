@@ -10,11 +10,11 @@
 
 * Demo: scene text image 'RONALDO'., for more details, please refer to [TextSR](https://arxiv.org/abs/1909.07113).
 
-![](./demo_pics/RONALDO.jpg)
+![](/Users/wangwenjia/Desktop/AAAI/demo_pics/RONALDO.jpg)
 
 Other positive cases:
 
-![demo](./demo_pics/positive_cases_1.jpg)
+![demo](/Users/wangwenjia/Desktop/AAAI/demo_pics/positive_cases_1.jpg)
 
 ## Datasets
 
@@ -38,7 +38,7 @@ The output file **syntax_crop.odgt** contains the needed json information to cre
 
 Ic13, ic15, ic03, cute, svt, svtp, iiit5k
 
-The 7 scene text recognition datasets can be found here: [[STR datasets]](https://github.com/chengzhanzhan/STR) (GitHub)
+The 7 scene text recognition datasets can be found here: [STR datasets](https://github.com/chengzhanzhan/STR) (GitHub)
 
 The LMDB of STR datasets can be downloaded here:
 
@@ -58,11 +58,11 @@ We have produced the codes to create LMDB files from **.txt **or **.odgt** file.
 
 * Our re-implemented aster model:
 
-  [[Google Drive]]()    [[Baidu Netdisk]]()
+  [[Google Drive]](https://drive.google.com/open?id=1wVXRoLUxEtaWCI9Z61x3q_bIkVRhJMdM)    [[Baidu Netdisk]](https://pan.baidu.com/s/1E1S7WfU0vQcYg6qj8PoaRg)
 
 * Our TextSR model (128*32, trained on SynthText_hr): 
 
-  [[Google Drive]]()    [[Baidu Netdisk]]()
+  [[Google Drive]](https://drive.google.com/open?id=17aboXTb54boPoY5L3PtOh_738asPkuPS)    [[Baidu Netdisk]](https://pan.baidu.com/s/1_Pr0qLx2UxYaz5fjW9LO-A)
 
 * SRGAN model (trained on ICDAR2013_train, ICDAR2015_train, SynthText_HR, 100 epochs): 
 
@@ -70,12 +70,17 @@ We have produced the codes to create LMDB files from **.txt **or **.odgt** file.
 
 ## Prerequisites
 
-- Pytorch 1.1.0
-- Cuda 9.0
-- Numpy 1.17.0
-- 
-
-
+- pytorch==1.1.0
+- cuda==9.0
+- numpy==1.17.0
+- PIL==5.3.0
+- cv2==4.1.0
+- pytorch_ssim[[github]](https://github.com/Po-Hsun-Su/pytorch-ssim)
+- tqdm==4.32.2
+- lmdb==0.97
+- re==2.2.1
+- json==2.0.9
+- scipy==1.1.0
 
 ## Training & testing & converting images
 
@@ -99,34 +104,6 @@ sh test.sh
 python3 convert.py --image_path='./' --width=128 --height=32 --ds_scale=4
 ```
 
-
-
-## Demonstration
-
-* **Recognition accuracy inprovement on scene text recognition datasets:**
-
-Generator trained and tested on SynthText_hr (129W) with the input size of **128*32**
-
-| dataset         | ic15 | ic13 | ic03 | CUTE80 | svt  | svtp | IIIT5K |
-| --------------- | ---- | ---- | ---- | ------ | ---- | ---- | ------ |
-| ASTER           |      |      |      |        |      |      |        |
-| **improvement** |      |      |      |        |      |      |        |
-| ASTER(fintune)  | 78.0 |      |      |        |      |      |        |
-| **improvement** |      |      |      |        |      |      |        |
-
-Generator trained and tested on SynthText_HR (7W) with the input size of **256*64**
-
-| dataset         | ic15 | ic13 | ic03 | CUTE80 | svt  | svtp | IIIT5K |
-| --------------- | ---- | ---- | ---- | ------ | ---- | ---- | ------ |
-| ASTER           | 77.5 | 88.2 |      |        |      |      |        |
-| **improvement** | 78.5 | 88.4 |      |        |      |      |        |
-| ASTER(fintune)  |      |      |      |        |      |      |        |
-| **improvement** |      |      |      |        |      |      |        |
-
-* **Restoration ability on low-resolution text image recognition:**
-
-
-
 ## Acknowledge
 
-Our codes are based on SOTA recognition network [aster-pytorch], thanks very much.
+Our codes are based on SOTA recognition network [aster-pytorch](https://github.com/ayumiymk/aster.pytorch),  thanks very much.
