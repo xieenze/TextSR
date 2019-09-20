@@ -4,11 +4,11 @@
 
 ## introduction
 
-* This project is a pytorch inplementation of the scene text picture super-resolution algorithm [TextSR](https://arxiv.org/abs/1909.07113).   TextSR is an end-to-end network aimed at restoring the low-resolution scene text images, in which the results of the text recognition network can feed back to guide the training of the super-resolution network. Under the guidance of the text recognition network, the super-resolution network would focus on refining the text region, and thus generate clear, sharp and identifiable text images.
+* This project is a pytorch inplementation of the scene text picture super-resolution algorithm [[TextSR]arxiv link ](https://arxiv.org/abs/1909.07113).   TextSR is an end-to-end network aimed at restoring the low-resolution scene text images, in which the results of the text recognition network can feed back to guide the training of the super-resolution network. Under the guidance of the text recognition network, the super-resolution network would focus on refining the text region, and thus generate clear, sharp and identifiable text images.
 
 * We mainly compare our method with SOTA super-resolution  method SRGAN.
 
-* Demo: scene text image 'RONALDO'., for more details, please refer to [TextSR](https://arxiv.org/abs/1909.07113).
+* Demo: scene text image 'RONALDO'., for more details, please refer to [[TextSR]arxiv link](https://arxiv.org/abs/1909.07113).
 
 ![](./demo_pics/RONALDO.jpg)
 
