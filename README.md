@@ -42,7 +42,7 @@ The 7 scene text recognition datasets can be found here: [STR datasets](https://
 
 The LMDB of STR datasets can be downloaded here:
 
-[Google Drive](https://drive.google.com/open?id=1vf_oJwk5V3pytMoblx6atSanxJSDccrt)   [Baidu Netdisk](https://pan.baidu.com/s/1yskh-1Nhob370wG8RY8EyQ)
+[[Google Drive]](https://drive.google.com/open?id=1vf_oJwk5V3pytMoblx6atSanxJSDccrt)   [[Baidu Netdisk]](https://pan.baidu.com/s/1yskh-1Nhob370wG8RY8EyQ)
 
 * **Create LMDB:**
 
