@@ -52,7 +52,7 @@ The LMDB files can be created by
 python3 utils/create_lmdb.py
 ```
 
-We have produced the codes to create LMDB files from **.txt**or **.odgt** file. You should change the details in the code.
+We have produced the codes to create LMDB files from **.txt** or **.odgt** file. You should change the details in the code.
 
 ## Models
 
