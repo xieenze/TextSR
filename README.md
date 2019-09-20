@@ -10,11 +10,11 @@
 
 * Demo: scene text image 'RONALDO'., for more details, please refer to [TextSR](https://arxiv.org/abs/1909.07113).
 
-![](/Users/wangwenjia/Desktop/AAAI/demo_pics/RONALDO.jpg)
+![](./demo_pics/RONALDO.jpg)
 
 Other positive cases:
 
-![demo](/Users/wangwenjia/Desktop/AAAI/demo_pics/positive_cases_1.jpg)
+![demo](./demo_pics/positive_cases_1.jpg)
 
 ## Datasets
 
