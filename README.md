@@ -38,7 +38,7 @@ The output file **syntax_crop.odgt** contains the needed json information to cre
 
 Ic13, ic15, ic03, cute, svt, svtp, iiit5k
 
-The 7 scene text recognition datasets can be found here: [STR datasets](https://github.com/chengzhanzhan/STR) (GitHub)
+The 7 scene text recognition datasets can be found here: [[STR datasets]](https://github.com/chengzhanzhan/STR) (GitHub)
 
 The LMDB of STR datasets can be downloaded here:
 
@@ -58,15 +58,15 @@ We have produced the codes to create LMDB files from **.txt **or **.odgt** file.
 
 * Our re-implemented aster model:
 
-  [Google Drive]()    [Baidu Netdisk]()
+  [[Google Drive]]()    [[Baidu Netdisk]]()
 
 * Our TextSR model (128*32, trained on SynthText_hr): 
 
-  [Google Drive]()    [Baidu Netdisk]()
+  [[Google Drive]]()    [[Baidu Netdisk]]()
 
 * SRGAN model (trained on ICDAR2013_train, ICDAR2015_train, SynthText_HR, 100 epochs): 
 
-  [Google Drive]()    [Baidu Netdisk]()
+  [[Google Drive]]()    [[Baidu Netdisk]]()
 
 ## Prerequisites
 
