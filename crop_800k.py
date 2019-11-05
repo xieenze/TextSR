@@ -86,8 +86,8 @@ def main(args):
 
             im1 = im[y_min:y_max, x_min:x_max]
             label = labels[j]
-            for idx in range(len(symbol)):
-                label = label.replace(symbol[idx], '')
+#             for idx in range(len(symbol)):
+#                 label = label.replace(symbol[idx], '')
 
             new_name = im_name.split('/')[0] + '_' + im_name.split('/')[1].split('.')[0] + '_' + str(
                 j) + '_' + label + '.jpg'
@@ -96,10 +96,10 @@ def main(args):
                 os.mkdir(im_new_path)
             cv2.imwrite(os.path.join(im_new_path, new_name), im1)
 
-            with open('./syntxt_crop.odgt', 'a') as f1:
-                dict1 = {'im_path': str(im_new_path), 'im_name': str(new_name), 'label': str(labels[j])}
-                js = json.dumps(dict1)
-                f1.write(js + '\n')
+#             with open('./syntxt_crop.odgt', 'a') as f1:
+#                 dict1 = {'im_path': str(im_new_path), 'im_name': str(new_name), 'label': str(labels[j])}
+#                 js = json.dumps(dict1)
+#                 f1.write(js + '\n')
 
         ''' 
         plot the bbox and rectangle of each word
