@@ -57,8 +57,6 @@ def crop_rect(list_bbox):
 def main(args):
     m = loadmat(args.gt_path)
     cwd = os.getcwd()
-    # symbol = ['~','`','!','@','$','#','%','^','&','*','(',')','-','+','=','_',
-    #           '|',',','[',']','\\',':',';','\'','"','.','?','<','>','/','{','}']
     symbol = string.punctuation
     count = 0
     for i in tqdm(range(m['imnames'][0].shape[0])):
