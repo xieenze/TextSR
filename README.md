@@ -1,3 +1,1 @@
-We have make a lot of modifications and re-organize this paper.     
-And we are waiting for the comments from the reviewers.    
-Once we get positive feedback, we will release the code as well as the newly collected dataset. 
+The upgrade version of TextSR, termed TextZoom, is accepted by ECCV2020, please refer to new project [TextZoom](https://github.com/JasonBoy1/TextZoom). This project will no longer update.
